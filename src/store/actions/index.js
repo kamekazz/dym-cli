@@ -1,6 +1,7 @@
 
 import axios from 'axios'
-const apiUrl = 'https://coloco.herokuapp.com'
+// const apiUrl = 'https://coloco.herokuapp.com'
+const apiUrl = 'http://127.0.0.1:5000'
 
 export const acModular = (prVal) => {
     let payload = prVal
@@ -30,16 +31,15 @@ export const acSignin = (formProps, callback) => async dispatch => {
       if (response.data.success) {
         dispatch(newMassages(response.data.message,response.data.success))
         localStorage.setItem('token', response.data.token)
-        dispatch({ type: "AUTH_USER", payload: response.data.token })
-        dispatch({ type: "AUTH_USER_INFO", payload: response.data.user })
-        console.log(response.data);
+        dispatch({ type: "USER_LOADED", payload: response.data.user })
         callback(true)
       }else{
+        dispatch({ type: "LOGIN_FAIL"})
         dispatch(newMassages(response.data.message))
         callback(false)
       }
     } catch (e) {
-      dispatch({ type: "AUTH_ERROR", payload: 'Invalid login credentials' });
+      dispatch({ type: "AUTH_ERROR"});
     }
 };
 

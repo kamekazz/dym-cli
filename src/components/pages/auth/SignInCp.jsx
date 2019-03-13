@@ -24,7 +24,11 @@ class SignInCp extends Component {
 
         this.props.acSignin(formProps, (isValed) => {
           if (isValed) {
-            this.props.history.push('/')
+            if (this.props.user.position=== 'admin') {
+               this.props.history.push('/') 
+            } else{
+                this.props.history.push('/m2') 
+            }
           } else {
             this.setState({progresive:false})
           }
@@ -75,12 +79,10 @@ class SignInCp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  
+    user: state.authReducer.user
 })
 
-const mapDispatchToProps = {
-  
-}
+
 
 export default connect(mapStateToProps,actions )(SignInCp)
 

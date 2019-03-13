@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions'
+import * as actions from '../store/actions'
 
 import  history from './history';
 
@@ -18,7 +18,7 @@ export default ChildComponent => {
     }
 
     shouldNavigateAway() {
-      if (!this.props.auth) {
+      if (!this.props.isAuthenticated || !this.props.user.position === 'admin' ) {
         history.push('/signin');
       }
     }
@@ -32,8 +32,8 @@ export default ChildComponent => {
 
 
   const mapStateToProps = (state) => ({
-     auth: state.auth.authenticated,
-     gif: state.auth.randamGif
+    isAuthenticated: state.authReducer.isAuthenticated,
+    user: state.authReducer.user,
   })
   
 

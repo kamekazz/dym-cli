@@ -8,6 +8,7 @@ import ListConpt from './costomerlis/ListConpt';
 import MapContainer from './map/MapContainer';
 import CustomizedDialogDemo from './newPacges/CustomizedDialogDemo'
 import DeliveryCP from './DeliveryList/DeliveryCP';
+import requireAuth from '../../../store/requireAuth';
 
 // import {styThem} from '../../../style/varble';
 
@@ -42,13 +43,7 @@ import DeliveryCP from './DeliveryList/DeliveryCP';
   }
 }
 
-const mapStateToProps = (state) => ({
-  
-})
 
-const mapDispatchToProps = {
-  
-}
 
 const DashboardSty = styled.div`
   
@@ -70,4 +65,4 @@ const ListCard = styled.div`
 
 `
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default requireAuth(Dashboard)
