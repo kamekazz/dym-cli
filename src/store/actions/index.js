@@ -39,6 +39,7 @@ export const acSignin = (formProps, callback) => async dispatch => {
         callback(false)
       }
     } catch (e) {
+      dispatch(newMassages(e))
       dispatch({ type: "AUTH_ERROR"});
     }
 };
