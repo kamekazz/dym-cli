@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularDeterminate from '../../layout/CircularDeterminate';
+import * as actions from '../../../store/actions';
 
 class SignInCp extends Component {
 
@@ -13,6 +14,23 @@ class SignInCp extends Component {
         password:'',
         progresive:false
     }
+
+    onSubmit = () => {
+        let formProps = {
+          userName: this.state.userName,
+          password:this.state.password
+        }
+        this.setState({progresive:true})
+
+        this.props.acSignin(formProps, (isValed) => {
+          if (isValed) {
+            this.props.history.push('/')
+          } else {
+            this.setState({progresive:false})
+          }
+        });
+    };
+    
 
 
   render() {
@@ -64,7 +82,7 @@ const mapDispatchToProps = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInCp)
+export default connect(mapStateToProps,actions )(SignInCp)
 
 
 const MainEL = styled.div`

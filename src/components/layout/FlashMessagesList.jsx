@@ -7,7 +7,7 @@ import * as actions from '../../store/actions'
 
   settimer =()=>[
     setTimeout(() => {
-      this.props.newMassages(null,null)
+      this.props.newMassages(null)
     }, 3000)
   ]
 
