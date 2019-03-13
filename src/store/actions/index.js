@@ -44,6 +44,15 @@ export const acSignin = (formProps, callback) => async dispatch => {
     }
 };
 
+export const acSignOut = () => dispatch => {
+  dispatch(newMassages("LOGOUT_SUCCESS"))
+  return {
+    type: "LOGOUT_SUCCESS",
+  }
+}
+
+
+
 ////messages
 
 export const newMassages = (text) => {
