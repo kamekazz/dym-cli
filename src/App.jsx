@@ -20,6 +20,7 @@ import styled from 'styled-components';
 import {styThem} from './style/varble';
 
 import WorkID from './components/layout/nav/WorkID';
+import  FlashMessagesList  from './components/layout/FlashMessagesList';
 
 
 const drawerWidth = 200;
@@ -156,6 +157,7 @@ class ResponsiveDrawer extends React.Component {
           </Hidden>
         </nav>
         <main className={classes.content}>
+          <FlashMessagesList />
           <div className={classes.toolbar} />
           {this.props.children}
         </main>
