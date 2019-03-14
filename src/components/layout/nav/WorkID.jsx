@@ -11,22 +11,21 @@ class WorkID extends Component {
 
 
   render() {
+    
     return (
       <WorkIDsty>
-        <img src={data.img} alt="fa;jlkfdsa;lfdsa;jfdsla"/>
-        <h3>{data.name}</h3>
+        {this.props.user && <img src={data.img} alt="fa;jlkfdsa;lfdsa;jfdsla"/>}
+        {this.props.user &&<h3>{this.props.user.userName}</h3>}
       </WorkIDsty>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  
+  user: state.authReducer.user
 })
 
-const mapDispatchToProps = {
-  
-}
+
 
 
 const WorkIDsty = styled.div`
@@ -40,4 +39,4 @@ const WorkIDsty = styled.div`
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkID)
+export default connect(mapStateToProps, null)(WorkID)
