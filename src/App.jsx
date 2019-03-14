@@ -6,12 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 
-import Dashboard from '@material-ui/icons/DashboardTwoTone';
 import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
-import HistoryIcon from '@material-ui/icons/History';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -21,6 +17,7 @@ import {styThem} from './style/varble';
 
 import WorkID from './components/layout/nav/WorkID';
 import  FlashMessagesList  from './components/layout/FlashMessagesList';
+import ListCp from './components/layout/nav/ListCp';
 
 
 const drawerWidth = 200;
@@ -63,12 +60,7 @@ const styles = theme => ({
   }
 });
 
-const data =[
-  {title:'Dashboard',icon:<Dashboard />,on:true},
-  {title:'Home',icon:<HomeIcon />,on:false},
-  {title:'Admin',icon:<InboxIcon />,on:false},
-  {title:'History',icon:<HistoryIcon />,on:false},
-]
+
 
 class ResponsiveDrawer extends React.Component {
   state = {
@@ -82,16 +74,7 @@ class ResponsiveDrawer extends React.Component {
   render() {
     const { classes, theme } = this.props;
 
-    const rdNavList = ()=>(
-      data.map(list =>(
-        <ListNavItem  on={list.on} key={list.title}>
-              <ListNavItemIcom>{list.icon}</ListNavItemIcom>
-              <ListNavItemTextPosition>
-                <ListNavItemText>{list.title}</ListNavItemText>
-              </ListNavItemTextPosition> 
-        </ListNavItem>
-      ))
-    )
+
 
     const drawer = (
       <div>
@@ -100,7 +83,7 @@ class ResponsiveDrawer extends React.Component {
         </div>
         <Divider />
           <ListNav>
-            {rdNavList()}
+            <ListCp></ListCp>
           </ListNav>
         <Divider />
       </div>
@@ -179,33 +162,7 @@ const ListNav = styled.div`
   padding: 6px 0;
 `
 
-const ListNavItem = styled.div`
-  display:flex;
-  padding:6px 18px;
-  align-items:center;
-  justify-content:space-between ;
-  &:hover{
-    background:${styThem.secondary.dark};
-    color:${styThem.color.white};
-  }
-  transition:all .2s ease-in-out;
-  color:${props => (props.on && styThem.primary.main)};
-  cursor:pointer;
-  
-`
 
-const ListNavItemIcom = styled.div`
-  display:flex;
-`
-const ListNavItemTextPosition = styled.div`
-  flex-grow:1;
-  display:flex;
-  justify-content:center;
-`
-
-const ListNavItemText = styled.div`
-  font-size:25px;
-`
 
 const Space = styled.div`
   flex-grow:1;
