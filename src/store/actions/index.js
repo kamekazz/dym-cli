@@ -54,6 +54,7 @@ export const acNewEM = (formProps,callback) => async dispatch => {
     )
     if (response.data.success) {
       dispatch(newMassages(response.data.message))
+      dispatch(acGetAll())
       callback(true)
     }else{
       dispatch(newMassages(response.data.message))
@@ -63,6 +64,22 @@ export const acNewEM = (formProps,callback) => async dispatch => {
     dispatch(newMassages(e))
     callback(true)
 
+  }
+};
+
+export const acGetAll = () => async dispatch => {
+  try {
+    const response = await axios.get(
+      `${apiUrl}/api/accounts/all`
+    )
+    if (response.data.success) {
+      dispatch({ type: "ALL_USER_LIST", payload: response.data.allUser })
+      dispatch(newMassages(response.data.message))
+    }else{
+      dispatch(newMassages(response.data.message))
+    }
+  } catch (e) {
+    dispatch(newMassages(e))
   }
 };
 
