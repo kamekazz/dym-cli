@@ -1,7 +1,8 @@
 const initialState = {
     isAuthenticated: null,
     isLoading: false,
-    user: null
+    user: null,
+    position:''
 };
 
 
@@ -17,7 +18,8 @@ export default function(state = initialState, action) {
           ...state,
           isAuthenticated: true,
           isLoading: false,
-          user: action.payload
+          user: action.payload,
+          position:action.payload.position
         };
       case "LOGIN_SUCCESS":
       case "REGISTER_SUCCESS":

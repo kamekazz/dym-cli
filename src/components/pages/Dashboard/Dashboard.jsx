@@ -18,6 +18,11 @@ import requireAuth from '../../../store/requireAuth';
     addModuler: false
   }
 
+
+  componentDidMount(){
+    this.props.acRoute('Dashboard')
+}
+
   openModuler =()=>{
     console.log('good')
   }

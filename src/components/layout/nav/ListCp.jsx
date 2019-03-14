@@ -12,10 +12,10 @@ import history from '../../../store/history'
 
 
 const data =[
-    {title:'Dashboard',icon:<Dashboard />,on:false,url:'/'},
-    {title:'Home',icon:<HomeIcon />,on:false,url:'/'},
-    {title:'Admin',icon:<InboxIcon />,on:false,url:'/neww'},
-    {title:'History',icon:<HistoryIcon />,on:false,url:'/'},
+    {title:'Dashboard',icon:<Dashboard />,url:'/'},
+    {title:'Home',icon:<HomeIcon />,url:'/'},
+    {title:'Admin',icon:<InboxIcon />,url:'/neww'},
+    {title:'History',icon:<HistoryIcon />,url:'/'},
 ]
  class ListCp extends Component {
 
@@ -27,7 +27,7 @@ const data =[
   render() {
     const rdNavList = ()=>(
         data.map(list =>(
-          <ListNavItem  onClick={()=> this.goto(list.url)} on={list.on} key={list.title}>
+          <ListNavItem  onClick={()=> this.goto(list.url)} on={this.props.routeId === list.title && true} key={list.title}>
                 <ListNavItemIcom>{list.icon}</ListNavItemIcom>
                 <ListNavItemTextPosition>
                   <ListNavItemText>{list.title}</ListNavItemText>
@@ -35,10 +35,11 @@ const data =[
           </ListNavItem>
         ))
     )
+    
 
     return (
       <div>
-        {this.props.isAuthenticated && rdNavList()}
+        {this.props.position === 'admin' ? rdNavList() : <h3>HI!!!</h3>}
       </div>
     )
   }
@@ -73,7 +74,9 @@ const ListNavItemText = styled.div`
 `
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.authReducer.isAuthenticated
+    isAuthenticated: state.authReducer.isAuthenticated,
+    position: state.authReducer.position,
+    routeId:state.message.routeId
 })
 
 

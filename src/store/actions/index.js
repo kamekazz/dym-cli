@@ -69,11 +69,8 @@ export const newMassages = (text) => {
 ///routes
 
 export const acRoute = (text) => {
-  let payload = {
-    text:text
-  }
   return {
     type: "ROUTED_ID",
-    payload: payload
+    payload: text
   };
 }
