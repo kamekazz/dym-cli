@@ -22,7 +22,7 @@ import Dashboard from './components/pages/Dashboard/Dashboard';
 import Moble from './components/pages/moble/Moble';
 import SignInCp from './components/pages/auth/SignInCp';
 import SignOutCp from './components/pages/auth/SignOutCp';
-import AdworckerCp from './components/pages/admin/AdworckerCp';
+import AdminCp from './components/pages/admin/AdminCp';
 
 
 
@@ -58,7 +58,7 @@ ReactDOM.render(
                 <Route path="/m2" exact component={Moble} />
                 <Route path="/signin" exact component={SignInCp} />
                 <Route path="/signout" exact component={SignOutCp} />
-                <Route path="/neww" exact component={AdworckerCp} />
+                <Route path="/neww" exact component={AdminCp} />
             </Switch>
             </App>
         </ThemeProvider>    

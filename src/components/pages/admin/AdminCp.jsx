@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import requireAuth from '../../../store/requireAuth';
+import NewWCp from './NewWCp';
 
-class AdworckerCp extends Component {
+class AdminCp extends Component {
 
     componentDidMount(){
         this.props.acRoute('Admin')
@@ -9,10 +10,10 @@ class AdworckerCp extends Component {
   render() {
     return (
       <div>
-        addnewepl
+        <NewWCp></NewWCp>
       </div>
     )
   }
 }
 
-export default requireAuth(AdworckerCp) 
+export default requireAuth(AdminCp) 
