@@ -1,4 +1,4 @@
-
+import history from '../history'
 import axios from 'axios'
 // const apiUrl = 'https://coloco.herokuapp.com'
 const apiUrl = 'http://127.0.0.1:5000'
@@ -36,13 +36,36 @@ export const acSignin = (formProps, callback) => async dispatch => {
       }else{
         dispatch({ type: "LOGIN_FAIL"})
         dispatch(newMassages(response.data.message))
-        callback(false)
+        callback(true)
       }
     } catch (e) {
       dispatch(newMassages(e))
       dispatch({ type: "AUTH_ERROR"});
+      callback(true)
+
     }
 };
+
+export const acNewEM = (formProps,callback) => async dispatch => {
+  try {
+    const response = await axios.post(
+      `${apiUrl}/api/accounts/new`,
+      formProps
+    )
+    if (response.data.success) {
+      dispatch(newMassages(response.data.message))
+      callback(true)
+    }else{
+      dispatch(newMassages(response.data.message))
+      callback(false)
+    }
+  } catch (e) {
+    dispatch(newMassages(e))
+    callback(true)
+
+  }
+};
+
 
 export const acSignOut = () => dispatch => {
   dispatch(newMassages("LOGOUT_SUCCESS"))
