@@ -4,7 +4,7 @@ import requireAuth from '../../../store/requireAuth';
 class AdworckerCp extends Component {
 
     componentDidMount(){
-        this.props.acRoute('Admin')
+        // this.props.acRoute('Admin')
       }
   render() {
     return (

@@ -20,6 +20,7 @@ export default ChildComponent => {
     shouldNavigateAway() {
       if (!this.props.isAuthenticated || !this.props.user.position === 'admin' ) {
         history.push('/signin');
+        this.props.newMassages('admin required')
       }
     }
 
