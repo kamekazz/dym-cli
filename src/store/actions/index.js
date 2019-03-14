@@ -64,3 +64,16 @@ export const newMassages = (text) => {
       payload: payload
     };
 }
+
+
+///routes
+
+export const acRoute = (text) => {
+  let payload = {
+    text:text
+  }
+  return {
+    type: "ROUTED_ID",
+    payload: payload
+  };
+}
