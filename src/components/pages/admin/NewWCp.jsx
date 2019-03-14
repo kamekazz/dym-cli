@@ -9,6 +9,8 @@ import * as actions from '../../../store/actions';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import Paper from '@material-ui/core/Paper';
+
 
  class NewWCp extends Component {
 
@@ -58,6 +60,7 @@ import InputLabel from '@material-ui/core/InputLabel';
     render() {
 
         const  rdSignInCard =()=>(
+                <Paper >
             
             <CardEL>
                 <HederEL>Add New Employee </HederEL>
@@ -89,7 +92,6 @@ import InputLabel from '@material-ui/core/InputLabel';
                     >
                         <MenuItem value={this.state.position}>
                         </MenuItem>
-                        <MenuItem value={'admin'}>Admin</MenuItem>
                         <MenuItem value={'delivery'}>Delivery</MenuItem>
                         <MenuItem value={"dispatch"}>Dispatch</MenuItem>
                     </Select>
@@ -99,6 +101,8 @@ import InputLabel from '@material-ui/core/InputLabel';
                     </Button>
                 </ContainedEL>
             </CardEL>
+            </Paper >
+
          
         )
     
@@ -125,13 +129,11 @@ export default connect(mapStateToProps, actions)(NewWCp)
 
 const CardEL = styled.div`
     min-width:320px;
-    background:whitesmoke;
     display:flex;
     align-items:center;
     flex-direction:column;
     padding:24px;
-    border-radius:3px;
-    border: solid 1px ${styThem.color.greyDark2};
+
 `
 
 const ContainedEL = styled.form`

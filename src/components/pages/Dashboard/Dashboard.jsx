@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import styled from 'styled-components';
+// import { styThem } from '../../../style/varble';
 
 import ListConpt from './costomerlis/ListConpt';
-// import { styThem } from '../../../style/varble';
 import MapContainer from './map/MapContainer';
 import CustomizedDialogDemo from './newPacges/CustomizedDialogDemo'
 import DeliveryCP from './DeliveryList/DeliveryCP';
